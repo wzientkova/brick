@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "C:\\Projects\\Develop\\brick1\\android\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi\\ic_launcher.png",
+        "source": "C:\\Projects\\Develop\\brick1\\android\\res\\drawable-xxxhdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "C:\\Projects\\Develop\\brick\\android\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi\\ic_launcher.png",
+        "source": "C:\\Projects\\Develop\\brick\\android\\res\\drawable-xxxhdpi\\ic_launcher.png"
+    }
+]
