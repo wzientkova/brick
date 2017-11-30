@@ -3,7 +3,6 @@ package com.wzientkova.brick.prop;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.BodyDef;
@@ -50,7 +49,7 @@ public class Plank implements Prop {
         height = 1;
 
         // set the plank's sprite
-        sprite = new Sprite(AssetManager.Regions.PLANK.getRegion());
+        sprite = new Sprite(AssetManager.Regions.PLANK_CLASSIC.getRegion());
         sprite.setX(x - halfWidth);
         sprite.setY(y - height / 2 + margin);
         sprite.setSize(width, height);
@@ -139,14 +138,6 @@ public class Plank implements Prop {
         return mousePosX;
     }
 
-    @Override
-    public void setPosition(Vector2 vector2) {
-    }
-
-    @Override
-    public void destroy() {
-
-    }
 
     public void touchDown() {
         active = true;
@@ -157,8 +148,5 @@ public class Plank implements Prop {
         body.setLinearVelocity(0, 0);
     }
 
-    public Body getBody() {
-        return body;
-    }
 
 }

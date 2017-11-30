@@ -473,8 +473,8 @@ public class AssetManager {
     }
 
     public enum Regions {
-
-        PLANK(Atlases.ALL);
+        BALL_CLASSIC(Atlases.ALL),
+        PLANK_CLASSIC(Atlases.ALL);
 
         private final Atlases parent;
 

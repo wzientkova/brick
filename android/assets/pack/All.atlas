@@ -1,12 +1,215 @@
 
-All.png
+all.png
+size: 2048,2048
 format: RGBA8888
-filter: Nearest,Nearest
+filter: Linear,Linear
 repeat: none
-plank
+background_classic
   rotate: false
-  xy: 1, 1
-  size: 298, 64
-  orig: 298, 64
+  xy: 1024, 232
+  size: 1020, 1812
+  orig: 1020, 1812
+  offset: 0, 0
+  index: -1
+background_wood
+  rotate: false
+  xy: 2, 232
+  size: 1020, 1812
+  orig: 1020, 1812
+  offset: 0, 0
+  index: -1
+ball_classic
+  rotate: false
+  xy: 1614, 2
+  size: 75, 75
+  orig: 75, 75
+  offset: 0, 0
+  index: -1
+blockade_1
+  rotate: false
+  xy: 1024, 79
+  size: 1020, 49
+  orig: 1020, 49
+  offset: 0, 0
+  index: -1
+blockade_2
+  rotate: false
+  xy: 1024, 181
+  size: 1020, 49
+  orig: 1020, 49
+  offset: 0, 0
+  index: -1
+blockade_3
+  rotate: false
+  xy: 1024, 130
+  size: 1020, 49
+  orig: 1020, 49
+  offset: 0, 0
+  index: -1
+brick_normal_blue
+  rotate: false
+  xy: 1378, 16
+  size: 116, 61
+  orig: 116, 61
+  offset: 0, 0
+  index: -1
+brick_normal_green
+  rotate: false
+  xy: 1496, 16
+  size: 116, 61
+  orig: 116, 61
+  offset: 0, 0
+  index: -1
+brick_normal_orange
+  rotate: false
+  xy: 1024, 16
+  size: 116, 61
+  orig: 116, 61
+  offset: 0, 0
+  index: -1
+brick_normal_purple
+  rotate: false
+  xy: 1142, 16
+  size: 116, 61
+  orig: 116, 61
+  offset: 0, 0
+  index: -1
+brick_normal_red
+  rotate: false
+  xy: 1260, 16
+  size: 116, 61
+  orig: 116, 61
+  offset: 0, 0
+  index: -1
+coin
+  rotate: false
+  xy: 1895, 24
+  size: 50, 53
+  orig: 50, 53
+  offset: 0, 0
+  index: -1
+drop_blockade
+  rotate: false
+  xy: 1691, 11
+  size: 66, 66
+  orig: 66, 66
+  offset: 0, 0
+  index: -1
+drop_speed_down
+  rotate: false
+  xy: 1827, 11
+  size: 66, 66
+  orig: 66, 66
+  offset: 0, 0
+  index: -1
+drop_speed_up
+  rotate: false
+  xy: 1759, 11
+  size: 66, 66
+  orig: 66, 66
+  offset: 0, 0
+  index: -1
+foreground_bottom
+  rotate: false
+  xy: 2, 27
+  size: 1020, 203
+  orig: 1020, 203
+  offset: 0, 0
+  index: -1
+
+all2.png
+size: 2048,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+button_big
+  rotate: false
+  xy: 940, 617
+  size: 511, 105
+  orig: 511, 105
+  offset: 0, 0
+  index: -1
+button_fb
+  rotate: false
+  xy: 1265, 530
+  size: 96, 85
+  orig: 96, 85
+  offset: 0, 0
+  index: -1
+button_green
+  rotate: false
+  xy: 2, 202
+  size: 370, 102
+  orig: 370, 102
+  offset: 0, 0
+  index: -1
+button_pause
+  rotate: false
+  xy: 1700, 637
+  size: 96, 85
+  orig: 96, 85
+  offset: 0, 0
+  index: -1
+button_settings
+  rotate: false
+  xy: 374, 219
+  size: 96, 85
+  orig: 96, 85
+  offset: 0, 0
+  index: -1
+button_story
+  rotate: false
+  xy: 2, 306
+  size: 518, 147
+  orig: 518, 147
+  offset: 0, 0
+  index: -1
+coin_big
+  rotate: false
+  xy: 2, 2
+  size: 100, 105
+  orig: 100, 105
+  offset: 0, 0
+  index: -1
+foreground_top
+  rotate: false
+  xy: 940, 724
+  size: 1020, 247
+  orig: 1020, 247
+  offset: 0, 0
+  index: -1
+logo_big
+  rotate: false
+  xy: 2, 455
+  size: 936, 516
+  orig: 936, 516
+  offset: 0, 0
+  index: -1
+panel_coin
+  rotate: false
+  xy: 522, 359
+  size: 353, 94
+  orig: 353, 94
+  offset: 0, 0
+  index: -1
+panel_diamond
+  rotate: false
+  xy: 2, 109
+  size: 245, 91
+  orig: 245, 91
+  offset: 0, 0
+  index: -1
+panel_stopwatch
+  rotate: false
+  xy: 1453, 626
+  size: 245, 96
+  orig: 245, 96
+  offset: 0, 0
+  index: -1
+plank_classic
+  rotate: false
+  xy: 940, 528
+  size: 323, 87
+  orig: 323, 87
   offset: 0, 0
   index: -1

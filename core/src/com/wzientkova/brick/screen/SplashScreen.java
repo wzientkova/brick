@@ -4,6 +4,7 @@ import com.badlogic.gdx.scenes.scene2d.actions.Actions;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.utils.viewport.ExtendViewport;
 import com.wzientkova.brick.BrickGame;
+import com.wzientkova.brick.BrickGame;
 import com.wzientkova.brick.asset.AssetLoader;
 import com.wzientkova.brick.asset.AssetManager;
 import com.wzientkova.brick.util.Constant;

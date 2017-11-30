@@ -29,8 +29,6 @@ public class GameScreen extends StageScreen implements InputProcessor {
 
     private int frameCounter;
 
-    private boolean stopping;
-
     private SpriteBatch batch;
 
     public GameScreen(BrickGame brickGame) {
@@ -74,8 +72,6 @@ public class GameScreen extends StageScreen implements InputProcessor {
 
     @Override
     public void render(float delta) {
-
-        if (stopping) return;
 
         frameCounter++;
 

@@ -4,6 +4,7 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.wzientkova.brick.BrickGame;
+import com.wzientkova.brick.BrickGame;
 import com.wzientkova.brick.asset.AssetManager;
 
 public abstract class StageScreen implements Screen {
@@ -36,6 +37,10 @@ public abstract class StageScreen implements Screen {
         screen = this;
 
         this.brickGame = brickGame;
+    }
+
+    public Stage getStage() {
+        return stage;
     }
 
     @Override

@@ -1,10 +1,13 @@
 package com.wzientkova.brick;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
+import com.wzientkova.brick.prop.Ball;
 import com.wzientkova.brick.prop.Plank;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -13,7 +16,7 @@ import java.util.List;
  */
 public class Game {
 
-    private boolean running;
+    private List<Ball> balls = new ArrayList<>();
     private Plank plank;
     private List<Body> bodiesToDestroy = new ArrayList<>();
 
@@ -24,16 +27,19 @@ public class Game {
     public Game() {
 
         this.plank = new Plank();
+        this.balls.add(new Ball(new Vector2(0, -9)));
+
         start();
+
+        for (Ball ball : balls) {
+            ball.launch(new Vector2(1f, 2));
+        }
     }
 
     /**
      * Starts the game.
      */
     public void start() {
-        // todo set the ball in start position
-        // todo enable user input
-        running = true;
     }
 
     public void flushProps() {
@@ -57,6 +63,27 @@ public class Game {
 
         // render the plank
         plank.render(spriteBatch);
+
+        updateBalls(spriteBatch);
+
+    }
+
+    private void updateBalls(SpriteBatch spriteBatch) {
+
+        Iterator<Ball> iterator = balls.iterator();
+
+        while (iterator.hasNext()) {
+
+            Ball ball = iterator.next();
+
+            // remove coins which are already bellow the screen
+            if (ball.getPosition().y < Controller.getCamera().getUnprojectedScreenVector().y) {
+                iterator.remove();
+                continue;
+            }
+
+            ball.render(spriteBatch);
+        }
     }
 
     /* -- getters and setters -- */
