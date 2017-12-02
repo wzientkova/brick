@@ -474,6 +474,9 @@ public class AssetManager {
 
     public enum Regions {
         BALL_CLASSIC(Atlases.ALL),
+        BRICK_NORMAL_BLUE(Atlases.ALL),
+        BRICK_NORMAL_GREEN(Atlases.ALL),
+        BRICK_NORMAL_ORANGE(Atlases.ALL),
         PLANK_CLASSIC(Atlases.ALL);
 
         private final Atlases parent;

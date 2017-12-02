@@ -15,7 +15,13 @@ import com.badlogic.gdx.utils.viewport.ExtendViewport;
 import com.wzientkova.brick.BrickGame;
 import com.wzientkova.brick.Controller;
 import com.wzientkova.brick.Game;
+import com.wzientkova.brick.Level;
+import com.wzientkova.brick.prop.Brick;
+import com.wzientkova.brick.prop.BrickType;
 import com.wzientkova.brick.util.Constant;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class GameScreen extends StageScreen implements InputProcessor {
 
@@ -33,14 +39,8 @@ public class GameScreen extends StageScreen implements InputProcessor {
 
     public GameScreen(BrickGame brickGame) {
         super(brickGame);
-        game = new Game();
+        game = new Game(createLevel());
         init();
-    }
-
-
-    @Override
-    public void show() {
-
     }
 
     protected void init() {
@@ -60,6 +60,43 @@ public class GameScreen extends StageScreen implements InputProcessor {
         //GestureDetector gd = new GestureDetector(this);
         //InputMultiplexer multi = new InputMultiplexer(stage, gd);
         Gdx.input.setInputProcessor(this);
+    }
+
+    private Level createLevel() { // todo debug remove
+
+        Level level = new Level();
+
+        List<Brick> bricks = new ArrayList<>();
+
+        for (int i = 0; i < 6; i++) {
+            for (int j = 0; j < 3; j++) {
+                Brick brick = new Brick(BrickType.NORMAL_BLUE, -5f + (i*2), 11f - j);
+                bricks.add(brick);
+            }
+        }
+
+        for (int i = 0; i < 6; i++) {
+            for (int j = 0; j < 3; j++) {
+                Brick brick = new Brick(BrickType.NORMAL_GREEN, -5f + (i*2), 8f - j);
+                bricks.add(brick);
+            }
+        }
+
+        for (int i = 0; i < 6; i++) {
+            for (int j = 0; j < 3; j++) {
+                Brick brick = new Brick(BrickType.NORMAL_ORANGE, -5f + (i*2), 5f - j);
+                bricks.add(brick);
+            }
+        }
+
+        level.setBricks(bricks);
+
+        return level;
+    }
+
+    @Override
+    public void show() {
+
     }
 
     @Override

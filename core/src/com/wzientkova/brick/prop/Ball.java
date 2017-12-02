@@ -112,4 +112,8 @@ public class Ball implements Prop {
     public Vector2 getPosition() {
         return position;
     }
+
+    public Body getBody() {
+        return body;
+    }
 }
