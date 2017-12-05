@@ -3,7 +3,9 @@ package com.wzientkova.brick;
 import com.badlogic.gdx.physics.box2d.Contact;
 import com.badlogic.gdx.physics.box2d.ContactImpulse;
 import com.badlogic.gdx.physics.box2d.ContactListener;
+import com.badlogic.gdx.physics.box2d.Fixture;
 import com.badlogic.gdx.physics.box2d.Manifold;
+import com.wzientkova.brick.prop.Ball;
 import com.wzientkova.brick.prop.Brick;
 
 public class ContactHandler implements ContactListener {
@@ -16,29 +18,38 @@ public class ContactHandler implements ContactListener {
 
     @Override
     public void beginContact(Contact contact) {
-        if (contact.getFixtureA().getFilterData().categoryBits == PropFilter.BRICK) {
-            switch (contact.getFixtureB().getFilterData().categoryBits) {
-                case PropFilter.BALL:
+        Fixture fixtureB = contact.getFixtureB();
+        Fixture fixtureA = contact.getFixtureA();
+        if (fixtureA.getFilterData().categoryBits == PropFilter.BRICK) {
+            if (fixtureB.getFilterData().categoryBits == PropFilter.BALL) {// get brick from the contact
+                Brick brick = (Brick) fixtureA.getBody().getUserData();
 
-                    // get brick from the contact
-                    Brick brick = (Brick) contact.getFixtureA().getBody().getUserData();
+                // call hit first and wait for brick's response
+                if (brick != null) {
 
-                    // call hit first and wait for brick's response
-                    if (brick != null) {
+                    brick.hit(); // todo maybe we will here need a power of the hit
 
-                        brick.hit(); // todo maybe we will here need a power of the hit
-
-                        // check if brick is dead after last hit
-                        if (brick.isDead()) {
-                            game.destroyProp(brick);
-                        }
+                    // check if brick is dead after last hit
+                    if (brick.isDead()) {
+                        game.destroyProp(brick);
                     }
+                }
 
-                    break;
-                default:
-                    break;
+
+            } else {
             }
         }
+
+        if (fixtureA.getFilterData().categoryBits == PropFilter.PLANK) {
+            if (fixtureB.getFilterData().categoryBits == PropFilter.BALL) {
+                if (fixtureB.getBody().getUserData() instanceof Ball) {
+                    game.plankHit((Ball) fixtureB.getBody().getUserData());
+                }
+
+
+            }
+        }
+
     }
 
     @Override

@@ -64,6 +64,16 @@ public class Game {
         start();
     }
 
+    public void plankHit(Ball ball) {
+
+        Vector2 plankPosition = plank.getBody().getPosition();
+        Vector2 ballPosition = ball.getBody().getPosition();
+
+        float angle = (ballPosition.x - plankPosition.x) * 25;
+
+        ball.getBody().setLinearVelocity(ball.getBody().getLinearVelocity().setAngle(90 - angle));
+    }
+
     public void render(SpriteBatch spriteBatch) {
 
         // render the plank
@@ -115,5 +125,4 @@ public class Game {
     public Plank getPlank() {
         return plank;
     }
-
 }

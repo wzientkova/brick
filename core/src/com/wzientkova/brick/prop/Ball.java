@@ -19,7 +19,7 @@ import com.wzientkova.brick.asset.AssetManager;
 public class Ball implements Prop {
 
     private static final float DEFAULT_SIZE = 0.7f;
-    private static final float SPEED = 15f;
+    private static final float SPEED = 5f;
 
     private Sprite sprite;
     private Body body;

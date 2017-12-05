@@ -11,6 +11,7 @@ import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.wzientkova.brick.Controller;
 import com.wzientkova.brick.Prop;
+import com.wzientkova.brick.PropFilter;
 import com.wzientkova.brick.asset.AssetManager;
 
 public class Plank implements Prop {
@@ -76,11 +77,9 @@ public class Plank implements Prop {
         // add the fixture to the body
         body.createFixture(tmpFixtureDef);
 
-
-        // during collision detection it is then like contact.fixtureA.getBody.getUserData..
-
         // filter for collisions and contact handler
         Filter filter = new Filter();
+        filter.categoryBits = PropFilter.PLANK; // category code for the plank
 
         // add whole plank object as user data of it's body because of collision handling
         body.setUserData(this);
