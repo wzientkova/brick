@@ -80,18 +80,18 @@ public class Ball implements Prop {
     public void render(SpriteBatch spriteBatch) {
 
         // check for collision with the left side of the screen
-        if (body.getPosition().x < (Controller.getCamera().getUnprojectedScreenVector().x * -1) + radius) {
+        /*if (body.getPosition().x < (Controller.getCamera().getUnprojectedScreenVector().x * -1) + radius) {
             body.setLinearVelocity(body.getLinearVelocity().x * -1, body.getLinearVelocity().y);
         }
 
         // check for collision with the right side of the screen
         if (body.getPosition().x > Controller.getCamera().getUnprojectedScreenVector().x - radius) {
             body.setLinearVelocity(body.getLinearVelocity().x * -1, body.getLinearVelocity().y);
-        }
+        }*/
 
         // check for collision with the top side of the screen
-        if (body.getPosition().y > (Controller.getCamera().getUnprojectedScreenVector().y * -1) - radius) {
-            body.setLinearVelocity(body.getLinearVelocity().x, body.getLinearVelocity().y * -1);
+        if (body.getPosition().y > Controller.getGameViewport().getWorldHeight() - radius) {
+            body.setLinearVelocity(body.getLinearVelocity().x, Math.abs(body.getLinearVelocity().y) * -1);
         }
 
         // synchronize sprite with the body

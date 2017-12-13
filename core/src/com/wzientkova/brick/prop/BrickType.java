@@ -14,17 +14,23 @@ public enum BrickType {
     NORMAL_GREEN(AssetManager.Regions.BRICK_NORMAL_GREEN),
     NORMAL_ORANGE(AssetManager.Regions.BRICK_NORMAL_ORANGE);
 
-    private AssetManager.Regions texture;
+    private AssetManager.Regions region;
 
-    BrickType(AssetManager.Regions texture) {
-        this.texture = texture;
+    BrickType(AssetManager.Regions region) {
+        this.region = region;
     }
 
     public TextureRegion getTextureRegion() {
-        return texture.getRegion();
+        return region.getRegion();
     }
 
     public Sprite getSprite() {
-        return new Sprite(texture.getRegion());
+        return new Sprite(region.getRegion());
     }
+
+
+    public AssetManager.Regions getRegion() {
+        return region;
+    }
+
 }

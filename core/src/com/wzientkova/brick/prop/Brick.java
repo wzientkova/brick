@@ -27,27 +27,37 @@ public class Brick implements Prop {
 
     public Brick(BrickType brickType, float x, float y) {
 
-        position = new Vector2(x, y); // todo vector should already arrive here by parameter
+        this(brickType, new Vector2(x, y));
+    }
+
+    /**
+     *
+     * @param brickType
+     * @param xy in world coordinates
+     */
+    public Brick(BrickType brickType, Vector2 xy) {
+
+        position = xy;
 
         setBrickType(brickType);
 
-        // this defines the width and stuff
-        width = 2;
-        height = 1;
-
-        this.x = x - width / 2;
-        this.y = y - height / 2;
-
         sprite = brickType.getSprite();
 
-        sprite.setX((x - width / 2));
-        sprite.setY((y - height / 2));
+        // this defines the width and stuff
+        width = brickType.getRegion().getWorldWidth();
+        height = brickType.getRegion().getWorldHeight();
+
+        this.x = position.x - width / 2;
+        this.y = position.y - height / 2;
+
+        sprite.setX(position.x - width / 2);
+        sprite.setY(position.y - height / 2);
         sprite.setSize(width, height);
 
         // body definitions required to create a body
         BodyDef bodyDef = new BodyDef();
         bodyDef.type = BodyDef.BodyType.StaticBody;
-        bodyDef.position.set(x, y);
+        bodyDef.position.set(position);
         bodyDef.awake = false;
 
         // adds a body to the world

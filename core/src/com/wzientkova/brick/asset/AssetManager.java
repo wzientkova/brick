@@ -23,6 +23,7 @@ import com.badlogic.gdx.scenes.scene2d.utils.TextureRegionDrawable;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.I18NBundle;
 import com.badlogic.gdx.utils.Logger;
+import com.wzientkova.brick.Controller;
 import com.wzientkova.brick.util.Constant;
 
 public class AssetManager {
@@ -473,16 +474,44 @@ public class AssetManager {
     }
 
     public enum Regions {
-        BALL_CLASSIC(Atlases.ALL),
-        BRICK_NORMAL_BLUE(Atlases.ALL),
-        BRICK_NORMAL_GREEN(Atlases.ALL),
-        BRICK_NORMAL_ORANGE(Atlases.ALL),
-        PLANK_CLASSIC(Atlases.ALL);
+
+        BACKGROUND_CLASSIC(Atlases.ALL, 1020, 1812),
+        BACKGROUND_WOOD(Atlases.ALL, 1020, 1812),
+        BALL_CLASSIC(Atlases.ALL, 75, 75),
+        BLOCKADE_1(Atlases.ALL, 1020, 49),
+        BLOCKADE_2(Atlases.ALL, 1020, 49),
+        BLOCKADE_3(Atlases.ALL, 1020, 49),
+        BRICK_NORMAL_BLUE(Atlases.ALL, 116, 61),
+        BRICK_NORMAL_GREEN(Atlases.ALL, 116, 61),
+        BRICK_NORMAL_ORANGE(Atlases.ALL, 116, 61),
+        BRICK_NORMAL_PURPLE(Atlases.ALL, 116, 61),
+        BRICK_NORMAL_RED(Atlases.ALL, 116, 61),
+        BUTTON_BIG(Atlases.ALL, 511, 105),
+        BUTTON_FB(Atlases.ALL, 96, 85),
+        BUTTON_GREEN(Atlases.ALL, 370, 102),
+        BUTTON_PAUSE(Atlases.ALL, 96, 85),
+        BUTTON_SETTINGS(Atlases.ALL, 96, 85),
+        BUTTON_STORY(Atlases.ALL, 518, 147),
+        COIN(Atlases.ALL, 50, 53),
+        COIN_BIG(Atlases.ALL, 100, 105),
+        DROP_BLOCKADE(Atlases.ALL, 66, 66),
+        DROP_SPEED_DOWN(Atlases.ALL, 66, 66),
+        DROP_SPEED_UP(Atlases.ALL, 66, 66),
+        FOREGROUND_BOTTOM(Atlases.ALL, 1020, 203),
+        FOREGROUND_TOP(Atlases.ALL, 1020, 247),
+        LOGO_BIG(Atlases.ALL, 936, 516),
+        PANEL_COIN(Atlases.ALL, 353, 94),
+        PANEL_DIAMOND(Atlases.ALL, 245, 91),
+        PANEL_STOPWATCH(Atlases.ALL, 245, 96),
+        PLANK_CLASSIC(Atlases.ALL, 323, 87);
 
         private final Atlases parent;
+        private final int width, height;
 
-        Regions(Atlases parent) {
+        Regions(Atlases parent, int width, int height) {
             this.parent = parent;
+            this.width = width;
+            this.height = height;
         }
 
         public Atlases getParent() {
@@ -505,6 +534,23 @@ public class AssetManager {
             return AssetManager.get(parent).createPatch(this.toString());
         }
 
+
+        public int getWidth() {
+            return width;
+        }
+
+        public float getWorldWidth() {
+            return Controller.pixelsToWorld(width);
+        }
+
+        public int getHeight() {
+            return height;
+        }
+
+        public float getWorldHeight() {
+            return Controller.pixelsToWorld(height);
+        }
+
         @Override
         public String toString() {
             return name().toLowerCase();
@@ -513,7 +559,7 @@ public class AssetManager {
 
     public enum Textures implements Asset<Texture> {
 
-        NONE("", TEXTURE_PARAM_LINEAR);
+        SPLASH("splash.png", TEXTURE_PARAM_LINEAR);
 
         private String path;
         private AssetLoaderParameters<Texture> parameter;

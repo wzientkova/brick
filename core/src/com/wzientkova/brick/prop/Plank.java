@@ -3,6 +3,7 @@ package com.wzientkova.brick.prop;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.BodyDef;
@@ -16,8 +17,10 @@ import com.wzientkova.brick.asset.AssetManager;
 
 public class Plank implements Prop {
 
-    private static final int DEFAULT_WIDTH = 5;
-    private static final int DEFAULT_POS_Y = -10;
+
+    private static final float DEFAULT_POS_Y = Controller.pixelsToWorld(370);
+
+    private float newPosX;
 
     private float posY;
     private float width, height;
@@ -39,18 +42,20 @@ public class Plank implements Prop {
     public void build() {
 
         // default plank position
-        float x = 0;
-        float y = -10;
+        float x = Controller.getGameViewport().getWorldWidth() / 2f;
+        float y = DEFAULT_POS_Y;
 
-        width = DEFAULT_WIDTH;
+        AssetManager.Regions plankType = AssetManager.Regions.PLANK_CLASSIC;
+
+        // define plank's dimensions
+        width = plankType.getWorldWidth();
+        height = plankType.getWorldHeight();
+
         halfWidth = width / 2;
         posY = DEFAULT_POS_Y;
 
-        // define plank's dimensions
-        height = 1;
-
         // set the plank's sprite
-        sprite = new Sprite(AssetManager.Regions.PLANK_CLASSIC.getRegion());
+        sprite = new Sprite(plankType.getRegion());
         sprite.setX(x - halfWidth);
         sprite.setY(y - height / 2 + margin);
         sprite.setSize(width, height);
@@ -58,7 +63,7 @@ public class Plank implements Prop {
         // create body definitions required to create a body
         BodyDef bodyDef = new BodyDef();
         bodyDef.type = BodyDef.BodyType.DynamicBody;
-        bodyDef.position.set(0, y);
+        bodyDef.position.set(x, y);
         bodyDef.awake = false;
 
         // add the body to the world
@@ -76,6 +81,9 @@ public class Plank implements Prop {
 
         // add the fixture to the body
         body.createFixture(tmpFixtureDef);
+
+        // todo is it possible to attach this object to the fixture itself instead of body?
+        // during collision detection it is then like contact.fixtureA.getBody.getUserData..
 
         // filter for collisions and contact handler
         Filter filter = new Filter();
@@ -95,38 +103,30 @@ public class Plank implements Prop {
 
     public void render(SpriteBatch spriteBatch) {
 
+
         if (active) {
-
-            // get mouse X position and unproject it using camera
-            float mousePosX = Controller.getCamera().unproject(new Vector3(Gdx.input.getX(), 0, 0)).x;
-
-            // get unprojected screen size using camera
-            float unprojectedScreenX = Controller.getCamera().getUnprojectedScreenVector().x;
 
             float speed;
 
             // prevent moving the plank past the screen borders
-            mousePosX = getRestrictedMousePosX(mousePosX, unprojectedScreenX);
-
             // calculate the speed, which will be applied to the plank
-            speed = mousePosX - body.getPosition().x;
+            speed = getRestrictedMousePosX(newPosX) - body.getPosition().x;
 
             body.setLinearVelocity(speed * 20, 0);
 
             // synchronize sprite with the body
             sprite.setPosition(body.getPosition().x - halfWidth, posY - height / 2 + margin);
         }
-
         sprite.draw(spriteBatch);
     }
 
     /**
      * Restricts mouse position so the plank doesn't move past the screen borders.
      */
-    private float getRestrictedMousePosX(float mousePosX, float unprojectedScreenX) {
+    private float getRestrictedMousePosX(float mousePosX) {
 
-        float rightWall = unprojectedScreenX - halfWidth;
-        float leftWall = rightWall * -1;
+        float rightWall = Controller.getGameViewport().getWorldWidth() - sprite.getWidth() / 2f;
+        float leftWall = 0 + sprite.getWidth() / 2f;
 
         if (mousePosX < leftWall) {
             mousePosX = leftWall;
@@ -135,6 +135,10 @@ public class Plank implements Prop {
         }
 
         return mousePosX;
+    }
+
+    public void setPosition(Vector2 vector2) {
+        this.newPosX = vector2.x;
     }
 
 
@@ -149,5 +153,9 @@ public class Plank implements Prop {
 
     public Body getBody() {
         return body;
+    }
+
+    public Sprite getSprite() {
+        return sprite;
     }
 }

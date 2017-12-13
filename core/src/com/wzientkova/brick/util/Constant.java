@@ -7,7 +7,7 @@ package com.wzientkova.brick.util;
 public class Constant {
 
     // general
-    public static final String TITLE = "Brixbreaker";
+    public static final String TITLE = "Brick";
 
     public static final int VIRTUAL_HEIGHT = 1920;
     public static final int VIRTUAL_WIDTH = 1080;
@@ -45,4 +45,8 @@ public class Constant {
     public static final String DIR_LEVELS_ANDROID = "assets/gamedata/level/" + DIR_LEVELS;
     public static final String DIR_LEVELS_EDITOR = "gamedata/level_editor/";
     public static final String DIR_LEVELS_EDITOR_ANDROID = "assets/gamedata/level_editor/" + DIR_LEVELS_EDITOR;
+
+    public static final String PREFERENCES = "preferences";
+    public static final String SCORE = "score";
+
 }

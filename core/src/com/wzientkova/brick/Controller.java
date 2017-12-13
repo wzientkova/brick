@@ -1,7 +1,10 @@
 package com.wzientkova.brick;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.World;
+import com.badlogic.gdx.utils.viewport.ExtendViewport;
+import com.wzientkova.brick.util.Constant;
 
 import java.util.Random;
 
@@ -15,6 +18,7 @@ public class Controller {
     private static World world;
     private static Random random;
     private static Camera camera;
+    private static ExtendViewport gameViewport;
 
     public static World getWorld() {
 
@@ -46,5 +50,29 @@ public class Controller {
         return camera;
     }
 
+    public static ExtendViewport getGameViewport() {
 
+        if (gameViewport == null) {
+            gameViewport = new ExtendViewport(pixelsToWorld(Constant.VIRTUAL_WIDTH), pixelsToWorld(Constant.VIRTUAL_HEIGHT));
+            gameViewport.update(Gdx.graphics.getWidth(), Gdx.graphics.getHeight(), true);
+        }
+
+        return gameViewport;
+    }
+
+    public static final float PPM = 60;
+
+    public static float pixelsToWorld(int val) {
+        return val / PPM;
+    }
+
+    public static int worldToPixels(float val) {
+        return (int) (val * PPM);
+    }
+
+    public static Vector2 pixelsToWorld(Vector2 xy) {
+        xy.x /= PPM;
+        xy.y /= PPM;
+        return xy;
+    }
 }
