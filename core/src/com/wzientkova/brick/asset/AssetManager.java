@@ -434,7 +434,7 @@ public class AssetManager {
 
     public enum Atlases implements Asset<TextureAtlas> {
 
-        ALL("all.atlas");
+        ALL("all1.atlas");
 
         private final String path;
 
