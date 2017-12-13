@@ -25,11 +25,6 @@ public class SplashScreen extends StageScreen {
     public void init() {
 
         stage.setViewport(new ExtendViewport(Constant.VIRTUAL_WIDTH, Constant.VIRTUAL_HEIGHT));
-
-        Table table = new Table();
-        table.setFillParent(true);
-
-        stage.addActor(table);
     }
 
     @Override
